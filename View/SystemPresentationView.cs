@@ -14,6 +14,8 @@ namespace ChallangeCheapShark.View{
             System.Console.WriteLine("Loading...");
 
             Thread.Sleep(4000);
+
+            System.Console.Clear();
         }
 
         internal static void ShowSystemName(){ // Will Show the System's name

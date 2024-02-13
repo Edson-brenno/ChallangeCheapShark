@@ -5,6 +5,7 @@ namespace ChallangeCheapShark{
     class ChallangeCheapShark{
         public static void Main(string[] args){
             SystemPresentationView.ShowPresentation();
+            SystemPresentationView.ShowSystemName();
         } 
     }
 }
