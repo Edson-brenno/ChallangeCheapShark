@@ -4,11 +4,11 @@ using ChallangeCheapShark.Controller;
 
 namespace ChallangeCheapShark{
     class ChallangeCheapShark{
-        public static async Task Main(string[] args){
+        public static void Main(string[] args){
+            
             SystemPresentationView.ShowPresentation();
-            SystemPresentationView.ShowSystemName();
-            GameDealsController game = new GameDealsController();
-            await game.GetGamesDeals();
+            MenuDelsView menu = new MenuDelsView();
+            menu.Main();
         } 
     }
 }
