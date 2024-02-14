@@ -1,3 +1,5 @@
+using ChallangeCheapShark.ViewExceptions;
+
 namespace ChallangeCheapShark.View{
     internal class MenuDelsView{
 
@@ -13,9 +15,15 @@ namespace ChallangeCheapShark.View{
         }
 
         private void AskForTheMenuOption(){
-            System.Console.Write("Please, input the selected option: ");
-            string option = System.Console.ReadLine() ?? "";
-            System.Console.WriteLine($"You wrote {option}");
+            try{
+                System.Console.Write("Please, input the selected option: ");
+                string option = System.Console.ReadLine() ?? String.Empty;
+                System.Console.WriteLine($"You wrote {option}");
+            }
+            catch(Exception ex){
+                System.Console.WriteLine(ex.InnerException);
+            }
+            
         }
         internal void Main(){
             SystemPresentationView.ShowSystemName();
