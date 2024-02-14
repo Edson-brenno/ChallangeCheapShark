@@ -4,6 +4,7 @@ using System.Data;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using ChallangeCheapShark.Model;
+using ChallangeCheapShark.ControllerException;
 
 
 namespace ChallangeCheapShark.Controller{
@@ -11,14 +12,13 @@ namespace ChallangeCheapShark.Controller{
 
         private string apiUrl = "https://www.cheapshark.com/api/1.0/deals";
         internal async Task GetGamesSales(){
-            System.Console.WriteLine("Chegou aqui");
             try{
                 using(HttpClient client = new HttpClient()){
                     System.Console.WriteLine("Iniciou");
                     string answer = await client.GetStringAsync(this.apiUrl);
                     System.Console.WriteLine("CHegou");
 
-                    List<GameModel> sales = JsonSerializer.Deserialize<List<GameModel>>(answer) ?? throw new NoNullAllowedException();
+                    List<GameModel> sales = JsonSerializer.Deserialize<List<GameModel>>(answer) ?? throw new NotNullDealsException();
 
                     sales.Where(b => b.isOnSale == "1").ToList().ForEach(a => {System.Console.WriteLine(a.ToString());});
                   
