@@ -1,5 +1,5 @@
 namespace ChallangeCheapShark.Model{
-    class GameModel{
+    class GameDealsModel{
         public string? title {get;set;} // Game Tittle
         public string? salePrice {get;set;} // Price of sale
         public string? normalPrice {get;set;} // Normal price
