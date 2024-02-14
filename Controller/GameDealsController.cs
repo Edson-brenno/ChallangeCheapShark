@@ -1,7 +1,5 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
-using System.Runtime.InteropServices;
 using System.Text.Json;
 using ChallangeCheapShark.Model;
 using ChallangeCheapShark.ControllerException;
@@ -20,7 +18,7 @@ namespace ChallangeCheapShark.Controller{
                     
                     List<GameDealsModel> sales = JsonSerializer.Deserialize<List<GameDealsModel>>(answer) ?? throw new NotNullDealsException();
 
-                    sales.Where(b => b.isOnSale == "1").ToList().ForEach(a => {System.Console.WriteLine(a.ToString());});
+                    sales.Where(b => b.isOnSale == "1").GroupBy(c => c.title).Select(group => group.OrderByDescending(order => order.savings).First()).ToList().ForEach(a => {System.Console.WriteLine(a.ToString());});
                   
                 }
 
