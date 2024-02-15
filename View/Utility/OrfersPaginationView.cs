@@ -88,7 +88,7 @@ namespace ChallangeCheapShark.View{
             else if (!char.IsDigit(inputedPaginationOption[0])){
                 throw new MenuOptionIsNotADigitException();
             }
-            else if (char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) == 0){
+            else if (char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) == 0){ // If the choosed option is 0
                 throw new NotAValidMenuOptionException();
             }
             else if ((this.currentPage == 1 || this.currentPage == this.totalOfPages) && char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) > 3){
@@ -101,9 +101,53 @@ namespace ChallangeCheapShark.View{
                 return true;
             }
         }
-        internal void ShowPage(){
 
+        private async Task ExecuteTheSelectedPaginationOption(){
 
+            switch(this.choosedMenuOption){
+                case 1:
+                    MenuDelsView menu = new MenuDelsView();
+                    await menu.Main();
+                    break;
+                case 2:
+                    if(this.currentPage == 1){
+                        this.NextPage();
+                    }
+                    else {
+                        this.PreviousPage();
+                    }
+                    break;
+                case 3:
+                    if(this.currentPage == 1 || this.currentPage == this.totalOfPages){
+                        //Stop the execution
+                        Environment.Exit(0);
+                    }
+                    else{
+                        this.NextPage();
+                    }
+                    break;
+                case 4:
+                    //Stop the execution
+                    Environment.Exit(0);
+                    break;
+                default:
+                    throw new NotAValidMenuOptionException();
+
+            }
+        }
+        internal async Task Main(string menuName){
+
+            while(true){
+                System.Console.Clear();
+
+                System.Console.WriteLine(menuName);
+
+                this.ShowPaginationOptions();
+
+                this.AskForThePaginationOption();
+
+                await this.ExecuteTheSelectedPaginationOption();                
+            }
 
         }
     }

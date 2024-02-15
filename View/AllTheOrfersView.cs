@@ -3,12 +3,14 @@ using ChallangeCheapShark.Model;
 
 namespace ChallangeCheapShark.View{
     internal class AllTheOrfersView{
+
+        private string menuName = @"
+▄▀█ █░░ █░░   ▀█▀ █░█ █▀▀   █▀█ █▀█ █▀▀ █▀▀ █▀█ █▀
+█▀█ █▄▄ █▄▄   ░█░ █▀█ ██▄   █▄█ █▀▄ █▀░ ██▄ █▀▄ ▄█";
         private void ShowMenuOptionName(){ //Will show the menu option name
             System.Console.Clear();
 
-            System.Console.WriteLine(@"
-▄▀█ █░░ █░░   ▀█▀ █░█ █▀▀   █▀█ █▀█ █▀▀ █▀▀ █▀█ █▀
-█▀█ █▄▄ █▄▄   ░█░ █▀█ ██▄   █▄█ █▀▄ █▀░ ██▄ █▀▄ ▄█");
+            System.Console.WriteLine();
 
             System.Console.WriteLine("========================================================");
         }
@@ -20,7 +22,7 @@ namespace ChallangeCheapShark.View{
 
             OrfersPaginationView pagination = new OrfersPaginationView(61,10,orfers);
 
-            pagination.ShowTheTotalOfPages();
+            await pagination.Main(this.menuName);
         }
 
         internal async Task Main(){
