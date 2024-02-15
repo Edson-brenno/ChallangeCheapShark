@@ -66,7 +66,8 @@ namespace ChallangeCheapShark.View{
                         break;
                     
                     case 2:
-                        System.Console.WriteLine("See the best orfers");
+                        BestOrfersView bestOrfersView = new BestOrfersView();
+                        await bestOrfersView.Main();
                         break;
                     
                     case 3:
