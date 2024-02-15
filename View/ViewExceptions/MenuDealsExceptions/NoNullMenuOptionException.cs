@@ -1,5 +1,3 @@
-using ChallangeCheapShark.ViewInterfaces;
-
 namespace ChallangeCheapShark.ViewExceptions{
     internal class NoNullMenuOptionException:Exception{
         internal NoNullMenuOptionException(){
