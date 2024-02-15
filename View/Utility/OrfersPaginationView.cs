@@ -13,7 +13,7 @@ namespace ChallangeCheapShark.View{
         private int endItemIndex; // The End item index
         private List<GameDealsModel> salesOrfers; //List of sale orfers
 
-        private int choosedMenuOption;
+        private int choosedMenuOption; //Pagination option
 
         internal OrfersPaginationView(int totalOfItems, int sizePerPage, List<GameDealsModel> orfers){
             this.totalOfRegister = totalOfItems; 
@@ -31,7 +31,13 @@ namespace ChallangeCheapShark.View{
         private void NextPage(){ //Change the current page, startItemIndex, endItemIndex;
             this.currentPage += 1;
             this.startItemIndex = (this.currentPage - 1) * this.totalPerPage;
-            this.endItemIndex = ((this.currentPage - 1) * this.totalPerPage) + this.totalPerPage;
+            if(this.currentPage == this.totalOfPages){
+                this.endItemIndex = this.totalOfRegister;
+            }
+            else{
+                this.endItemIndex = ((this.currentPage - 1) * this.totalPerPage) + this.totalPerPage;
+            }
+            
         }
 
         private void PreviousPage(){ //Change the current page, startItemIndex, endItemIndex;
@@ -46,21 +52,21 @@ namespace ChallangeCheapShark.View{
 
             if(this.currentPage == 1){ // If it's the first page
                 System.Console.WriteLine("========================================================");
-                System.Console.WriteLine($"                      Pag {this.currentPage}/{this.totalOfPages}.");
+                System.Console.WriteLine($"            {this.endItemIndex} de {this.totalOfRegister} registros; Pag {this.currentPage}/{this.totalOfPages}.");
                 System.Console.WriteLine("========================================================");
                 System.Console.WriteLine("          [1] Menu [2] Next Page [3] Quit");
                 System.Console.WriteLine("========================================================");
             }
             else if (this.currentPage == this.totalOfPages){ //If it's the last page
                 System.Console.WriteLine("========================================================");
-                System.Console.WriteLine($"                      Pag {this.currentPage}/{this.totalOfPages}.");
+                System.Console.WriteLine($"            {this.endItemIndex} de {this.totalOfRegister} registros; Pag {this.currentPage}/{this.totalOfPages}.");
                 System.Console.WriteLine("========================================================");
                 System.Console.WriteLine("          [1] Menu [2] Previous Page [3] Quit");
                 System.Console.WriteLine("========================================================");
             }
             else{
                 System.Console.WriteLine("========================================================");
-                System.Console.WriteLine($"                      Pag {this.currentPage}/{this.totalOfPages}.");
+                System.Console.WriteLine($"            {this.endItemIndex} de {this.totalOfRegister} registros; Pag {this.currentPage}/{this.totalOfPages}.");
                 System.Console.WriteLine("========================================================");
                 System.Console.WriteLine("   [1] Menu [2] Previous Page [3] Next Page [4] Quit");
                 System.Console.WriteLine("========================================================");
@@ -112,6 +118,7 @@ namespace ChallangeCheapShark.View{
         private async Task ExecuteTheSelectedPaginationOption(){//Execute the choosed pagination option
             switch(this.choosedMenuOption){
                 case 1:
+                    System.Console.Clear();
                     MenuDelsView menu = new MenuDelsView();
                     await menu.Main();
                     break;
@@ -142,7 +149,7 @@ namespace ChallangeCheapShark.View{
             }
         }
 
-        private void ShowOrfers(){
+        private void ShowOrfers(){ //Show the list items
             for (int c = this.startItemIndex; c < this.endItemIndex; c++){
                 var orfer = this.salesOrfers[c];
                 System.Console.WriteLine(orfer.ToString());
