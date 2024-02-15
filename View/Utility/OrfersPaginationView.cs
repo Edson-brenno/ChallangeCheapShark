@@ -10,13 +10,15 @@ namespace ChallangeCheapShark.View{
         private int currentPage = 1; // Current Page
         private int startItemIndex; //The start item index
         private int endItemIndex; // The End item index
+        private List<GameDealsModel> salesOrfers; //List of sale orfers
 
-        internal OrfersPaginationView(int totalOfItems, int sizePerPage){
+        internal OrfersPaginationView(int totalOfItems, int sizePerPage, List<GameDealsModel> orfers){
             this.totalOfRegister = totalOfItems; 
             this.totalPerPage = sizePerPage;
             this.totalOfPages = (int)Math.Ceiling((double)totalOfRegister / sizePerPage); //Calculate the total of pages
             this.startItemIndex = (this.currentPage - 1) * sizePerPage;
             this.endItemIndex = ((this.currentPage - 1) * sizePerPage) + sizePerPage;
+            this.salesOrfers = orfers;
         }
 
         internal void ShowTheTotalOfPages(){
@@ -36,7 +38,8 @@ namespace ChallangeCheapShark.View{
                 this.endItemIndex = ((this.currentPage - 1) * this.totalPerPage) + this.totalPerPage;
             }
         }
-        internal void ShowPage(int page, List<GameDealsModel> orfers){
+        internal void ShowPage(){
+
 
 
         }

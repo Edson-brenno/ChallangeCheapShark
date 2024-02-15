@@ -18,7 +18,7 @@ namespace ChallangeCheapShark.View{
             GameDealsController gameDealsController = new GameDealsController();
             List<GameDealsModel> orfers = await gameDealsController.GetGamesDeals();
 
-            OrfersPaginationView pagination = new OrfersPaginationView(61,10);
+            OrfersPaginationView pagination = new OrfersPaginationView(61,10,orfers);
 
             pagination.ShowTheTotalOfPages();
         }
