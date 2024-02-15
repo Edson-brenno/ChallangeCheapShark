@@ -17,7 +17,6 @@ namespace ChallangeCheapShark.Controller{
                     string answer = await client.GetStringAsync(this.apiUrl);
                     
                     List<GameDealsModel> sales = JsonSerializer.Deserialize<List<GameDealsModel>>(answer) ?? throw new NotNullDealsException();
-
                     return sales; //sales.Where(b => b.isOnSale == "1").GroupBy(c => c.title).Select(group => group.OrderByDescending(order => order.savings).First()).ToList().ForEach(a => {System.Console.WriteLine(a.ToString());});
                 
                 }

@@ -14,12 +14,11 @@ namespace ChallangeCheapShark.View{
         }
 
         private async Task ShowAllTheOrfers(){
-            GameDealsController gameDeals = new GameDealsController();
-            List<GameDealsModel> orfers = await gameDeals.GetGamesDeals();
 
-            orfers.ToString();
+            GameDealsController gameDealsController = new GameDealsController();
+            List<GameDealsModel> orfers = await gameDealsController.GetGamesDeals();
 
-            System.Console.WriteLine("Chegou");
+            orfers.ForEach(a => System.Console.WriteLine(a.ToString()));
             
         }
 
