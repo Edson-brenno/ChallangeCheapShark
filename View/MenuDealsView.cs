@@ -3,8 +3,8 @@ using ChallangeCheapShark.ViewExceptions;
 namespace ChallangeCheapShark.View{
     internal class MenuDelsView{
 
-        private void ShowMenuOptions(){
-
+        private void ShowMenuOptions(){ //Show the menu Options
+ 
             System.Console.WriteLine("========================================");
             System.Console.WriteLine(" [1] See all the orfers");
             System.Console.WriteLine(" [2] See the best orfers");
@@ -14,20 +14,34 @@ namespace ChallangeCheapShark.View{
 
         }
 
-        private void AskForTheMenuOption(){
-            try{
-                System.Console.Write("Please, input the selected option: ");
-                string option = System.Console.ReadLine() ?? String.Empty;
-                System.Console.WriteLine($"You wrote {option}");
-                this.ValidateMenuOption(option); 
+        private void ClearTheCurrentLine(){ //Will clear the current line
+            System.Console.SetCursorPosition(0, Console.CursorTop - 1);
+
+            System.Console.WriteLine(new string(' ', Console.WindowWidth));
+
+            System.Console.SetCursorPosition(0, Console.CursorTop - 1);
+        }
+        private void AskForTheMenuOption(){ //Will ask the user to type the menu option
+            while(true){
+
+                try{
+                    System.Console.Write("Please, input the selected option: ");
+                    string option = System.Console.ReadLine() ?? String.Empty;
+
+                    if (this.ValidateMenuOption(option)){ //If the Menu option chosed is right
+                        break;
+                    }; 
+                }
+                catch(Exception ex){
+
+                    System.Console.WriteLine(ex.InnerException);
+                    this.ClearTheCurrentLine();
+                }
+
             }
-            catch(Exception ex){
-                System.Console.WriteLine(ex.InnerException);
-            }
-            
         }
 
-        private void ValidateMenuOption(string inputedMenuOption){
+        private bool ValidateMenuOption(string inputedMenuOption){ // Validate the inputed menu option
             if (string.IsNullOrEmpty(inputedMenuOption) || string.IsNullOrWhiteSpace(inputedMenuOption)){
                 throw new NoNullMenuOptionException();
             }
@@ -38,17 +52,17 @@ namespace ChallangeCheapShark.View{
                 throw new NotAValidMenuOptionException();
             }
             else{
-                System.Console.WriteLine("Everything is alright");
+                return true;
             }
         }
-        internal void Main(){
+        internal void Main(){ //The main Function
+        
             SystemPresentationView.ShowSystemName();
 
             this.ShowMenuOptions();
 
             this.AskForTheMenuOption();
 
-            System.Console.Read();
         }
     }
 }
