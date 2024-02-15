@@ -3,6 +3,8 @@ using ChallangeCheapShark.ViewExceptions;
 namespace ChallangeCheapShark.View{
     internal class MenuDelsView{
 
+        private int choosedMenuOption;
+
         private void ShowMenuOptions(){ //Show the menu Options
  
             System.Console.WriteLine("========================================");
@@ -28,7 +30,9 @@ namespace ChallangeCheapShark.View{
                     System.Console.Write("Please, input the selected option: ");
                     string option = System.Console.ReadLine() ?? String.Empty;
 
-                    if (this.ValidateMenuOption(option)){ //If the Menu option chosed is right
+                    if (this.ValidateMenuOption(option)){ //If the Menu choosed option is right
+                        
+                        this.choosedMenuOption = int.Parse(option);
                         break;
                     }; 
                 }
