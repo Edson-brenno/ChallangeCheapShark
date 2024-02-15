@@ -16,13 +16,6 @@ namespace ChallangeCheapShark.View{
 
         }
 
-        private void ClearTheCurrentLine(){ //Will clear the current line
-            System.Console.SetCursorPosition(0, Console.CursorTop - 1);
-
-            System.Console.WriteLine(new string(' ', Console.WindowWidth));
-
-            System.Console.SetCursorPosition(0, Console.CursorTop - 1);
-        }
         private void AskForTheMenuOption(){ //Will ask the user to type the menu option
             while(true){
 
@@ -39,7 +32,7 @@ namespace ChallangeCheapShark.View{
                 catch(Exception ex){
 
                     System.Console.WriteLine(ex.InnerException);
-                    this.ClearTheCurrentLine();
+                    BaseView.ClearTheCurrentLine();
                 }
 
             }
