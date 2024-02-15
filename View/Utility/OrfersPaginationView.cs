@@ -57,6 +57,20 @@ namespace ChallangeCheapShark.View{
                 System.Console.WriteLine("========================================================");
             }
         }
+
+        private void AskForThePaginationOption(){ //Ask the user the choosed pagination option
+
+            while(true){
+                try{
+                    System.Console.Write("Write, the option: ");
+                    string option = System.Console.ReadLine() ?? String.Empty;
+                }
+                catch(Exception ex){
+                    System.Console.WriteLine(ex.InnerException);
+                    BaseView.ClearTheCurrentLine();
+                }
+            }
+        }
         internal void ShowPage(){
 
 
