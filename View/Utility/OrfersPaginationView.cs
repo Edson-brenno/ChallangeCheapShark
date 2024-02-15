@@ -1,5 +1,6 @@
 using System.Dynamic;
 using ChallangeCheapShark.Model;
+using ChallangeCheapShark.ViewExceptions;
 
 namespace ChallangeCheapShark.View{
     internal class OrfersPaginationView{
@@ -69,6 +70,21 @@ namespace ChallangeCheapShark.View{
                     System.Console.WriteLine(ex.InnerException);
                     BaseView.ClearTheCurrentLine();
                 }
+            }
+        }
+
+        private bool ValidateThePaginationOption(string inputedPaginationOption){ //validate the user inputed option
+            if (string.IsNullOrEmpty(inputedPaginationOption) || string.IsNullOrWhiteSpace(inputedPaginationOption)){
+                throw new NoNullMenuOptionException();
+            }
+            else if (!char.IsDigit(inputedPaginationOption[0])){
+                throw new MenuOptionIsNotADigitException();
+            }
+            else if (char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) > 3 || char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) == 0){
+                throw new NotAValidMenuOptionException();
+            }
+            else{
+                return true;
             }
         }
         internal void ShowPage(){
