@@ -59,6 +59,31 @@ namespace ChallangeCheapShark.View{
                 return true;
             }
         }
+
+        private void ShowTheChoosedMenuOption(){
+            try{
+
+                switch(this.choosedMenuOption){
+                    
+                    case 1:
+                        System.Console.WriteLine("See all the orfers");
+                        break;
+                    
+                    case 2:
+                        System.Console.WriteLine("See the best orfers");
+                        break;
+                    
+                    case 3:
+                        System.Console.WriteLine("Good Bye");
+                        break;
+                    default:
+                        throw new NotAValidMenuOptionException();
+                }
+            }
+            catch(Exception ex){
+                System.Console.WriteLine(ex.InnerException);
+            }
+        }
         internal void Main(){ //The main Function
         
             SystemPresentationView.ShowSystemName();
@@ -66,6 +91,8 @@ namespace ChallangeCheapShark.View{
             this.ShowMenuOptions();
 
             this.AskForTheMenuOption();
+
+            this.ShowTheChoosedMenuOption();
 
         }
     }
