@@ -46,18 +46,25 @@ namespace ChallangeCheapShark.View{
 
             if(this.currentPage == 1){ // If it's the first page
                 System.Console.WriteLine("========================================================");
+                System.Console.WriteLine($"                      Pag {this.currentPage}/{this.totalOfPages}.");
+                System.Console.WriteLine("========================================================");
                 System.Console.WriteLine("          [1] Menu [2] Next Page [3] Quit");
                 System.Console.WriteLine("========================================================");
             }
             else if (this.currentPage == this.totalOfPages){ //If it's the last page
                 System.Console.WriteLine("========================================================");
+                System.Console.WriteLine($"                      Pag {this.currentPage}/{this.totalOfPages}.");
+                System.Console.WriteLine("========================================================");
                 System.Console.WriteLine("          [1] Menu [2] Previous Page [3] Quit");
                 System.Console.WriteLine("========================================================");
             }
-            else{ 
+            else{
+                System.Console.WriteLine("========================================================");
+                System.Console.WriteLine($"                      Pag {this.currentPage}/{this.totalOfPages}.");
                 System.Console.WriteLine("========================================================");
                 System.Console.WriteLine("   [1] Menu [2] Previous Page [3] Next Page [4] Quit");
                 System.Console.WriteLine("========================================================");
+                
             }
         }
 
@@ -102,8 +109,7 @@ namespace ChallangeCheapShark.View{
             }
         }
 
-        private async Task ExecuteTheSelectedPaginationOption(){
-
+        private async Task ExecuteTheSelectedPaginationOption(){//Execute the choosed pagination option
             switch(this.choosedMenuOption){
                 case 1:
                     MenuDelsView menu = new MenuDelsView();
@@ -135,12 +141,23 @@ namespace ChallangeCheapShark.View{
 
             }
         }
+
+        private void ShowOrfers(){
+            for (int c = this.startItemIndex; c < this.endItemIndex; c++){
+                var orfer = this.salesOrfers[c];
+                System.Console.WriteLine(orfer.ToString());
+            }
+        }
         internal async Task Main(string menuName){
 
             while(true){
                 System.Console.Clear();
 
                 System.Console.WriteLine(menuName);
+
+                System.Console.WriteLine("========================================================");
+
+                this.ShowOrfers();
 
                 this.ShowPaginationOptions();
 
