@@ -23,5 +23,17 @@ namespace ChallangeCheapShark.View{
 █▀ █░█ █▀▀ ▄▀█ █▀█ █▀ █░█ ▄▀█ █▀█ █▄▀
 ▄█ █▀█ ██▄ █▀█ █▀▀ ▄█ █▀█ █▀█ █▀▄ █░█");
         }
+
+        internal static void ShowObtainingInformationsMensage(){
+            System.Console.Clear();
+
+            System.Console.WriteLine(@"
+█▀ █░█ █▀▀ ▄▀█ █▀█ █▀ █░█ ▄▀█ █▀█ █▄▀
+▄█ █▀█ ██▄ █▀█ █▀▀ ▄█ █▀█ █▀█ █▀▄ █░█");
+
+            System.Console.WriteLine("========================================================");
+
+            System.Console.WriteLine("Obtaining informations..");
+        }
     }
 }
