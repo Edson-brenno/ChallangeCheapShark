@@ -13,6 +13,8 @@ namespace ChallangeCheapShark.View{
         private int endItemIndex; // The End item index
         private List<GameDealsModel> salesOrfers; //List of sale orfers
 
+        private int choosedMenuOption;
+
         internal OrfersPaginationView(int totalOfItems, int sizePerPage, List<GameDealsModel> orfers){
             this.totalOfRegister = totalOfItems; 
             this.totalPerPage = sizePerPage;
@@ -65,6 +67,12 @@ namespace ChallangeCheapShark.View{
                 try{
                     System.Console.Write("Write, the option: ");
                     string option = System.Console.ReadLine() ?? String.Empty;
+
+                    if (this.ValidateThePaginationOption(option)){ //If the Menu choosed option is right
+                        
+                        this.choosedMenuOption = int.Parse(option);
+                        break;
+                    }; 
                 }
                 catch(Exception ex){
                     System.Console.WriteLine(ex.InnerException);
@@ -80,7 +88,13 @@ namespace ChallangeCheapShark.View{
             else if (!char.IsDigit(inputedPaginationOption[0])){
                 throw new MenuOptionIsNotADigitException();
             }
-            else if (char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) > 3 || char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) == 0){
+            else if (char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) == 0){
+                throw new NotAValidMenuOptionException();
+            }
+            else if ((this.currentPage == 1 || this.currentPage == this.totalOfPages) && char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) > 3){
+                throw new NotAValidMenuOptionException();
+            }
+            else if ((this.currentPage != 1 || this.currentPage != this.totalOfPages) && char.IsDigit(inputedPaginationOption[0]) && int.Parse(inputedPaginationOption) > 4){
                 throw new NotAValidMenuOptionException();
             }
             else{
