@@ -59,7 +59,10 @@ namespace ChallangeCheapShark.View{
                 switch(this.choosedMenuOption){
                     
                     case 1:
-                        System.Console.WriteLine("See all the orfers");
+
+                        AllTheOrfersView allTheOrfersMenu = new AllTheOrfersView();
+                        allTheOrfersMenu.Main();
+                        
                         break;
                     
                     case 2:
