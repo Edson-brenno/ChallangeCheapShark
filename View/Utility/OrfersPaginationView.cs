@@ -23,6 +23,11 @@ namespace ChallangeCheapShark.View{
             System.Console.WriteLine(this.totalOfPages);
         }
 
+        private void NextPage(){
+            this.currentPage += 1;
+            this.startItemIndex = (this.currentPage - 1) * this.totalPerPage;
+            this.endItemIndex = ((this.currentPage - 1) * this.totalPerPage) + this.totalPerPage;
+        }
 
         internal void ShowPage(int page, List<GameDealsModel> orfers){
 
