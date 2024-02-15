@@ -12,7 +12,7 @@ namespace ChallangeCheapShark.Model{
 
         public override string ToString()
         {
-            return $"{this.title} with {this.savings}% of discount ---- R$ {this.salePrice}";
+            return $"{this.title} with {decimal.Parse(this.savings ?? "0").ToString("0.00")}% of discount ---- R$ {this.salePrice}";
         }
     }
 }
