@@ -38,6 +38,25 @@ namespace ChallangeCheapShark.View{
                 this.endItemIndex = ((this.currentPage - 1) * this.totalPerPage) + this.totalPerPage;
             }
         }
+
+        private void ShowPaginationOptions(){ //Show the pagination options
+
+            if(this.currentPage == 1){ // If it's the first page
+                System.Console.WriteLine("========================================================");
+                System.Console.WriteLine("          [1] Menu [2] Next Page [3] Quit");
+                System.Console.WriteLine("========================================================");
+            }
+            else if (this.currentPage == this.totalOfPages){ //If it's the last page
+                System.Console.WriteLine("========================================================");
+                System.Console.WriteLine("          [1] Menu [2] Previous Page [3] Quit");
+                System.Console.WriteLine("========================================================");
+            }
+            else{ 
+                System.Console.WriteLine("========================================================");
+                System.Console.WriteLine("   [1] Menu [2] Previous Page [3] Next Page [4] Quit");
+                System.Console.WriteLine("========================================================");
+            }
+        }
         internal void ShowPage(){
 
 
