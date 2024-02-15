@@ -53,7 +53,7 @@ namespace ChallangeCheapShark.View{
             }
         }
 
-        private void ShowTheChoosedMenuOption(){
+        private async Task ShowTheChoosedMenuOption(){
             try{
 
                 switch(this.choosedMenuOption){
@@ -61,7 +61,7 @@ namespace ChallangeCheapShark.View{
                     case 1:
 
                         AllTheOrfersView allTheOrfersMenu = new AllTheOrfersView();
-                        allTheOrfersMenu.Main();
+                        await allTheOrfersMenu.Main();
                         
                         break;
                     
@@ -80,7 +80,7 @@ namespace ChallangeCheapShark.View{
                 System.Console.WriteLine(ex.InnerException);
             }
         }
-        internal void Main(){ //The main Function
+        internal async Task Main(){ //The main Function
         
             SystemPresentationView.ShowSystemName();
 
@@ -88,7 +88,7 @@ namespace ChallangeCheapShark.View{
 
             this.AskForTheMenuOption();
 
-            this.ShowTheChoosedMenuOption();
+            await this.ShowTheChoosedMenuOption();
 
         }
     }
