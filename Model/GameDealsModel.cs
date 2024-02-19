@@ -1,18 +1,30 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace ChallangeCheapShark.Model{
     class GameDealsModel{
-        public string? title {get;set;} // Game Tittle
-        public string? salePrice {get;set;} // Price of sale
-        public string? normalPrice {get;set;} // Normal price
-        public string? isOnSale {get;set;} // Tell if it's on sale 1 = true and 0 = false
-        public string? savings {get;set;} // Tell's how much the user will save in porcent
-        public string? steamRatingText {get;set;} // Show's the game rating
-        public string? steamRatingPorcent {get;set;} // Show's the game rating in porcent
-        public string? steamRatingCount {get;set;} // Show's how much users have rated this game
-        public long releaseDate {get;set;} // Date when the game was launched
+        [JsonPropertyName("title")]
+        public string? Title {get;set;} // Game Tittle
+        [JsonPropertyName("SalePrice")]
+        public string? SalePrice {get;set;} // Price of sale
+        [JsonPropertyName("normalPrice")]
+        public string? NormalPrice {get;set;} // Normal price
+        [JsonPropertyName("isOnSale")]
+        public string? IsOnSale {get;set;} // Tell if it's on sale 1 = true and 0 = false
+        [JsonPropertyName("savings")]
+        public string? Savings {get;set;} // Tell's how much the user will save in porcent
+        [JsonPropertyName("steamRatingText")]
+        public string? SteamRatingText {get;set;} // Show's the game rating
+        [JsonPropertyName("steamRatingPorcent")]
+        public string? SteamRatingPorcent {get;set;} // Show's the game rating in porcent
+        [JsonPropertyName("steamRatingCount")]
+        public string? SteamRatingCount {get;set;} // Show's how much users have rated this game
+        [JsonPropertyName("releaseDate")]
+        public long ReleaseDate {get;set;} // Date when the game was launched
 
         public override string ToString()
         {
-            return $"{this.title} with {decimal.Parse(this.savings ?? "0").ToString("0.00")}% of discount ---- R$ {this.salePrice}";
+            return $"{this.Title} with {decimal.Parse(this.Savings ?? "0").ToString("0.00")}% of discount ---- R$ {this.SalePrice}";
         }
     }
 }

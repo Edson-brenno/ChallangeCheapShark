@@ -11,7 +11,7 @@ namespace ChallangeCheapShark.View{
 
             GameDealsController gameDealsController = new GameDealsController();
             List<GameDealsModel> orfers = await gameDealsController.GetGamesDeals();
-            List<GameDealsModel> bestOrfers = orfers.GroupBy(g => g.title).Select(select => select.OrderByDescending(d => d.savings).First()).ToList();
+            List<GameDealsModel> bestOrfers = orfers.GroupBy(g => g.Title).Select(select => select.OrderByDescending(d => d.Savings).First()).ToList();
 
             OrfersPaginationView pagination = new OrfersPaginationView(bestOrfers.Count(),9,bestOrfers);
 
